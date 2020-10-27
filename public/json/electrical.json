@@ -3,7 +3,7 @@
     {
       "name": "洗衣機",
       "content": 
-        {
+        [{
           "name": "洗衣機",
           "list": [
             {
@@ -31,12 +31,12 @@
               "url": "https://24h.pchome.com.tw/prod/DPAI4B-A900AEXYP?fq=/S/DPAI3Y"
             }
           ]
-        }
+        }]
     },
     {
       "name": "冰箱",
       "content": 
-        {
+        [{
           "name": "冰箱",
           "list": [
             {
@@ -56,12 +56,12 @@
               "url": "https://24h.pchome.com.tw/prod/DPAC05-A9009O6NN?fq=/S/DPAK1W"
             }
           ]
-        }
+        }]
     },
     {
       "name": "清淨除濕",
       "content": 
-        {
+        [{
           "name": "清淨除濕",
           "list": [
             {
@@ -85,7 +85,7 @@
               "url": "https://24h.pchome.com.tw/prod/DMAU6J-A900AUGBR?fq=/S/DMAU65"
             }
           ]
-        }
+        }]
     }
   ]
 }

@@ -6,7 +6,7 @@
     },
     {
       "name": "iphone",
-      "content": {
+      "content": [{
         "name": "iphone",
         "list": [
           {
@@ -30,11 +30,11 @@
             "urlManage" : "https://24h.pchome.com.tw/store/DYAJFT"
           }
         ]
-      }
+      }]
     },
     {
       "name": "Samsung",
-      "content": {
+      "content": [{
         "name": "Samsung",
         "list": [
           {
@@ -58,11 +58,11 @@
             "urlManage" : "https://24h.pchome.com.tw/prod/DYALAY-A900ASUBA?fq=/S/DYALAY"
           }
         ]
-      }
+      }]
     },
     {
       "name": "Pixel",
-      "content": {
+      "content": [{
         "name": "Pixel",
         "list": [
           {
@@ -76,11 +76,11 @@
             "urlManage" : "https://24h.pchome.com.tw/prod/DYAC7H-A900AVIA5?fq=/S/DYAT0M"
           }
         ]
-      }
+      }]
     },
     {
       "name": "SONY",
-      "content": {
+      "content": [{
         "name": "SONY",
         "list": [
           {
@@ -99,7 +99,7 @@
             "urlManage": "https://24h.pchome.com.tw/store/DYAGHQ"
           }
         ]
-      }
+      }]
     }
   ],
   "phone_popular": [

@@ -7,7 +7,7 @@
     {
       "name": "ASUS",
       "content": 
-        {
+        [{
           "name": "ASUS",
           "list": [
             {
@@ -43,12 +43,12 @@
               "url": "https://24h.pchome.com.tw/prod/DHAX95-1900AOL6S?fq=/S/DHAX95"
             }
           ]
-        }
+        }]
     },
     {
       "name": "Apple",
       "content": 
-        {
+        [{
           "name": "Apple",
           "list": [
             {
@@ -72,12 +72,12 @@
               "url": "https://24h.pchome.com.tw/prod/DYAJER-A900AMTAQ?fq=/S/DYAJEQ"
             }
           ]
-        }
+        }]
     },
     {
       "name": "MSI微星",
       "content":
-        {
+        [{
           "name": "MSI微星",
           "list": [
             {
@@ -109,12 +109,12 @@
               "url": "https://24h.pchome.com.tw/prod/DHAK8A-A900AW63L?fq=/S/DHAK82/"
             }
           ]
-        }
+        }]
     },
     {
       "name": "Acer",
       "content":
-        {
+        [{
           "name": "Acer",
           "list": [
             {
@@ -142,12 +142,12 @@
               "url": "https://24h.pchome.com.tw/prod/DHAEBP-A900ALG64?fq=/S/DHAEGJ"
             }
           ]
-        }
+        }]
     },
     {
       "name": "DELL",
       "content":
-        {
+        [{
           "name": "DELL",
           "list": [
             {
@@ -175,12 +175,12 @@
               "url": "https://24h.pchome.com.tw/prod/DHAI5G-A900A1SMY?fq=/S/DHAI6C"
             }
           ]
-        }
+        }]
     },
     {
       "name": "HP",
       "content":
-        {
+        [{
           "name": "HP",
           "list": [
             {
@@ -196,12 +196,12 @@
               "url": "https://24h.pchome.com.tw/store/DHAG9U"
             }
           ]
-        }
+        }]
     },
     {
       "name": "Lenovo",
       "content": 
-        {
+        [{
           "name": "Lenovo",
           "list": [
             {
@@ -217,7 +217,7 @@
               "url": "https://24h.pchome.com.tw/prod/DHBA40-A900AQ1NZ?fq=/S/DHBA3I"
             }
           ]
-        }
+        }]
     }
   ],
   "computer_popular": [
