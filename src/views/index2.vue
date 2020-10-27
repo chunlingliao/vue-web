@@ -140,7 +140,7 @@
                           <div class="tab-item">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <!-- 各類別tab -->
-                              
+
                                 <li v-for="(item, i) in getData" :key="i" @click="selectGame(item.name)"
                                   :class="[{ active: item.name === num },'nav-item nav-link tabList']">
                                     {{ item.name.replace("NUM_", "") }}
@@ -149,42 +149,43 @@
                             <div class="tab-content" id="myTabContent">
                                 <!-- 各大系統內容 -->
                               <div class="system-content">
-                                <div v-if="currentTitle != ''">
-                                  <div class="system-title">{{ currentTitle }}</div>
-                                  <div v-for="(item, i) in currentData" :key="i" class="system-item">
-                                    {{item}}
-                                    <a :href="`${item.url}`" target="_blank">
-                                      <!-- {{ item.name }} -->
-                                      <div v-if="selectButton==='個人電腦'|| selectButton==='通訊手機'" class="system-member-btn">
-                                        <i class="iconfont icon-Cart"></i>
-                                      </div>
-                                      <div v-if="selectButton==='通訊手機'" class="system-manage-btn">
-                                          <a :href="`${item.urlManage}`" target="_blank">
-                                            <i class="iconfont icon-wodedingdan"></i>
-                                          </a>
-                                      </div>
-                                    </a>
+                                <div v-if="currentTabName !== ''">
+                                  <div v-for="(items, i) in currentData" :key="i">
+                                    <div class="system-title">{{ items.name }}</div>
+                                    <div v-for="(item, j) in items.list" :key="j" class="system-item">
+                                      <a :href="`${item.url}`" target="_blank">
+                                        {{ item.name }}
+                                        <div v-if="selectButton==='個人電腦'|| selectButton==='通訊手機'" class="system-member-btn">
+                                          <i class="iconfont icon-Cart"></i>
+                                        </div>
+                                        <div v-if="selectButton==='通訊手機'" class="system-manage-btn">
+                                            <a :href="`${item.urlManage}`" target="_blank">
+                                              <i class="iconfont icon-wodedingdan"></i>
+                                            </a>
+                                        </div>
+                                      </a>
+                                    </div>
                                   </div>
                                 </div>
                                 <div v-else>
                                   <div v-for="(items, i) in currentAllData" :key="i" class="system-list">
-                                    <!-- {{ items }} -->
-                                    <div v-for="(itemj, j) in items" :key="j">
-                                      <!-- {{ itemj }} -->
-                                      <div class="system-title">{{ itemj.name }}</div>
-                                        <div v-for="(itemk, k) in itemj.list" :key="k" class="system-item">
-                                          <a :href="`${itemk.url}`" target="_blank">
-                                            <div class="item-title">{{ itemk.name }}</div>
-                                            <div v-if="selectButton==='個人電腦'|| selectButton==='通訊手機'" class="system-member-btn">
-                                              <i class="iconfont icon-Cart"></i>
-                                            </div>
-                                            <div v-if="selectButton==='通訊手機'" class="system-manage-btn">
-                                                <a :href="`${itemk.urlManage}`" target="_blank">
-                                                  <i class="iconfont icon-wodedingdan"></i>
-                                                </a>
-                                            </div>
-                                          </a>
-                                        </div>
+                                    <div v-if="items.content.length > 0">
+                                      <div v-for="(itemj, j) in items.content" :key="j">
+                                        <div class="system-title">{{ itemj.name }}</div>
+                                          <div v-for="(itemk, k) in itemj.list" :key="k" class="system-item">
+                                            <a :href="`${itemk.url}`" target="_blank">
+                                              <div class="item-title">{{ itemk.name }}</div>
+                                              <div v-if="selectButton==='個人電腦'|| selectButton==='通訊手機'" class="system-member-btn">
+                                                <i class="iconfont icon-Cart"></i>
+                                              </div>
+                                              <div v-if="selectButton==='通訊手機'" class="system-manage-btn">
+                                                  <a :href="`${itemk.urlManage}`" target="_blank">
+                                                    <i class="iconfont icon-wodedingdan"></i>
+                                                  </a>
+                                              </div>
+                                            </a>
+                                          </div>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -264,16 +265,22 @@ export default {
       src: "", //追蹤 store用
       // 搜尋的選單
       optionsList: [
-        'Q8娛樂城',
-        '金球娛樂城',
-        '炫海娛樂城'
+        // '冰河藍14吋',
+        // 'iMac 27',
+        // 'MacBook Pro13 灰色',
+        // '★17小時續航',
+        // '輕薄創作者'
       ],
       selected: '', // 搜尋選擇的娛樂城
       // 選單的url
-      itemsAll: {
-        'Q8娛樂城': 'https://Rsapi.q8.bet',
-        '金球娛樂城': 'https://NI0FE.tw886.cc'
-      },
+      search:[],
+      // itemsAll: {
+      //   '冰河藍14吋': 'https://24h.pchome.com.tw/prod/DHAX95-1900AQIVR?q=/S/DHAX9',
+      //   'iMac 27': 'https://24h.pchome.com.tw/prod/DYAJFC-A900ASXMF?fq=/S/DYAJFD',
+      //   'MacBook Pro13 灰色': 'https://24h.pchome.com.tw/prod/DYAJCS-1900AQM6T',
+      //   '★17小時續航': 'https://24h.pchome.com.tw/prod/DHAFJ8-A900ABR5Q',
+      //   '輕薄創作者': 'https://24h.pchome.com.tw/prod/DHAK8A-A900AW63L?fq=/S/DHAK82/'
+      // },
       //中間banner(@用ajax資料會有非同步問題吃不到swiper套件功能@)
       bannerItem: [],
       //banner左方1~6小廣告圖
@@ -294,16 +301,22 @@ export default {
       num: '全部',
       AllData:{},
       currentData: [],
-      currentTitle: '',
+      currentTabName: '', // 只有[全部]不會設定該值
       currentAllData: [],
       selectButton: ''
     }
   },
   watch: {
     //監聽值
-    'selected' (value) {
-      if (value) window.open(this.itemsAll[value])
-      this.selected = ''
+    'selected' (val) {
+      console.log(val,this.search)
+      // handler (val) {
+        // console.log(this.getSearchItem(),value,this.itemsAll)
+        for (let i in this.search){
+          if (val === this.search[i].text) window.open(this.search[i].url)
+        }
+        // this.selected = ''
+      // }
     },
     'getData' (items) {
       // 清除Tab資料
@@ -324,46 +337,29 @@ export default {
     },
     // 初始
     // 點擊選項
-    selectGame(name){
+    selectGame (name) {
       this.num = name // 加入active class
       // 清除Tab資料
       this.clearTabData()
       if (name === '全部') this.currentAllData = this.getData
       else this.initTab(this.getData, name)
-      console.log('this.currentAllData',this.currentAllData)
+      // console.log('this.currentAllData',this.currentAllData)
     },
     initTab (obj, name) {
       // 清除Tab資料
       this.clearTabData()
-      this.currentData = obj
-      this.currentTitle = name
       for (var i in obj) {
-        let items = obj[i].content
-        console.log('>>>items',items)
-        // this.currentData = items
-        // this.currentTitle = name
-        for(var j in items) {
-          console.log('>>>items',items[j], name)
-        //   if (obj[i].name === name) {
-        //       console.log('title',this.currentTitle)
-        //       console.log('>>>',items[j].list)
-        //       this.currentData = items[j].list
-        //       this.currentTitle = items[j].name
+        if (obj[i].name === name) {
+          this.currentData = obj[i].content
         }
-        // }  
-
-        // if (obj[i].name === name) {
-        //   console.log(obj[i])
-        //   this.currentData = obj[i].content.list
-        //   this.currentTitle = obj[i].content.name
-        // }
       }
+      this.currentTabName = name
     },
     // 清除Tab資料
     clearTabData () {
       this.currentData = []
       this.currentAllData = []
-      this.currentTitle = ''
+      this.currentTabName = ''
     },
     selectTab(i) {
     // 點擊上方tab i傳入點擊的選項 ex.通訊手機
@@ -398,6 +394,24 @@ export default {
       }else{
         $('.popular-wrap').css('display','block')
       }
+    },
+    // 取得搜尋內容
+    getSearchItem () {
+      let self = this
+      this.ajaxSend('search')
+        .then(function(res) {
+          console.log('search:',res)
+          if (res) {
+            // console.log('取得熱門推薦內容(success):', res)
+            if (res.items) self.search = res.items
+            for(let i in res.items) {
+              self.optionsList.push(res.items[i].text)
+            }
+          }
+        })
+        .catch(function (error) {
+          console.log('取得搜尋內容(error):', error)
+        })
     },
     // 取得上方Banner廣告圖
     getBannerItem () {
@@ -439,7 +453,7 @@ export default {
       this.ajaxSend(type)
         .then(function(res) {
           if (res) {
-            console.log('取得中間分頁內容(success):', res)
+            // console.log('取得中間分頁內容(success):', res)
             if (res.computer_data) self.getData = res.computer_data
             if (res.phone_data) self.getData = res.phone_data
             if (res.article_data) self.getData = res.article_data
@@ -476,6 +490,7 @@ export default {
   mounted: function() {
     // 取得上方Banner廣告圖
     this.getBannerItem()
+    this.getSearchItem()
 
     //觸發點擊第一個nav
     $('.nav-item .tab').first().trigger('click');
